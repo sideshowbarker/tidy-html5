@@ -54,7 +54,7 @@ static tidyLanguagesType tidyLanguages = {
         &language_zh_cn,
         &language_fr,
         &language_de,
-        $language_sr,
+        &language_sr,
 #endif
         NULL /* This array MUST be null terminated. */
     }
