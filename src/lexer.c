@@ -2559,7 +2559,6 @@ static Node* GetTokenFromStream( TidyDocImpl* doc, GetTokenMode mode )
             lexer->insertspace = no;
         }
 
-        // If non breaking space, change to a space
         if (c == 160 && (mode == Preformatted))
             c = ' ';
 
@@ -2573,7 +2572,6 @@ static Node* GetTokenFromStream( TidyDocImpl* doc, GetTokenMode mode )
                  to do this here rather than in parser methods
                  for elements that don't have mixed content.
                 */
-                
                 if (TY_(IsWhite)(c) && (mode == IgnoreWhitespace)
                       && lexer->lexsize == lexer->txtstart + 1)
                 {
@@ -2605,7 +2603,7 @@ static Node* GetTokenFromStream( TidyDocImpl* doc, GetTokenMode mode )
                         lexer->waswhite = yes;
 
                         if (mode != Preformatted && mode != IgnoreMarkup && c != ' ')
-                          ChangeChar(lexer, ' ');
+                            ChangeChar(lexer, ' ');
                     }
 
                     continue;
