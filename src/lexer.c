@@ -2516,7 +2516,7 @@ static Node* GetTokenFromStream( TidyDocImpl* doc, GetTokenMode mode )
     AttVal *attributes = NULL;
     Node *node;
     Bool fixComments;
-    
+
     switch ( cfgAutoBool(doc, TidyFixComments) )
     {
         case TidyYesState:
@@ -2557,13 +2557,12 @@ static Node* GetTokenFromStream( TidyDocImpl* doc, GetTokenMode mode )
         switch (lexer->state)
         {
             case LEX_CONTENT:  /* element content */
-
                 /*
                  Discard white space if appropriate. Its cheaper
                  to do this here rather than in parser methods
                  for elements that don't have mixed content.
                 */
-                if (TY_(IsWhite)(c) && (mode == IgnoreWhitespace) 
+                if (TY_(IsWhite)(c) && (mode == IgnoreWhitespace) && (c != '\n' && mode != Preformatted)
                       && lexer->lexsize == lexer->txtstart + 1)
                 {
                     --(lexer->lexsize);
@@ -2591,10 +2590,11 @@ static Node* GetTokenFromStream( TidyDocImpl* doc, GetTokenMode mode )
                     }
                     else /* prev character wasn't white */
                     {
-                        lexer->waswhite = yes;
-
-                        if (mode != Preformatted && mode != IgnoreMarkup && c != ' ')
+                        // THIS CHANGE ADDS NEWLINES BUT WE'RE STILL MISSING SPACES
+                        if (mode != Preformatted && mode != IgnoreMarkup && c != ' ' && c != '\n') {
+                        // printf("(mode != Preformatted && mode != IgnoreMarkup && c != ' ') == true %d %c\n", c, c);
                             ChangeChar(lexer, ' ');
+                        }
                     }
 
                     continue;
@@ -2914,6 +2914,8 @@ static Node* GetTokenFromStream( TidyDocImpl* doc, GetTokenMode mode )
                 {
                     mode = Preformatted;
                 }
+
+                
 
                 if ((mode != Preformatted && ExpectsContent(lexer->token))
                     || nodeIsBR(lexer->token) || nodeIsHR(lexer->token))

@@ -2291,7 +2291,7 @@ void TY_(PPrintTree)( TidyDocImpl* doc, uint mode, uint indent, Node *node )
 
     if (node->type == TextNode)
     {
-        PPrintText( doc, mode, indent, node );
+      PPrintText( doc, mode, indent, node );
     }
     else if ( node->type == CommentTag )
     {
