@@ -2516,7 +2516,6 @@ static Node* GetTokenFromStream( TidyDocImpl* doc, GetTokenMode mode )
     AttVal *attributes = NULL;
     Node *node;
     Bool fixComments;
-    Node *parent = lexer->parent;
 
     switch ( cfgAutoBool(doc, TidyFixComments) )
     {
@@ -2544,6 +2543,7 @@ static Node* GetTokenFromStream( TidyDocImpl* doc, GetTokenMode mode )
     while ((c = TY_(ReadChar)(doc->docIn)) != EndOfStream)
     {
         // Check to see if we're in a pre, if  so, don't worry about whitespace
+        Node *parent = lexer->parent;
         while (parent) {
           if (nodeIsPRE(parent)) {
             mode = Preformatted;
