@@ -2517,7 +2517,6 @@ static Node* GetTokenFromStream( TidyDocImpl* doc, GetTokenMode mode )
     Node *node;
     Bool fixComments;
     Node *parent = lexer->parent;
-    Bool hasPreAncestor = no;
 
     switch ( cfgAutoBool(doc, TidyFixComments) )
     {
@@ -2548,7 +2547,6 @@ static Node* GetTokenFromStream( TidyDocImpl* doc, GetTokenMode mode )
         while (parent) {
           if (nodeIsPRE(parent)) {
             mode = Preformatted;
-            hasPreAncestor = yes;
           }
 
           parent = parent->parent;
