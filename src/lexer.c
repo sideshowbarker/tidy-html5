@@ -2517,6 +2517,7 @@ static Node* GetTokenFromStream( TidyDocImpl* doc, GetTokenMode mode )
     Node *node;
     Bool fixComments;
     Node *parent = lexer->parent;
+    Bool hasPreAncestor = no;
 
     switch ( cfgAutoBool(doc, TidyFixComments) )
     {
@@ -2543,6 +2544,16 @@ static Node* GetTokenFromStream( TidyDocImpl* doc, GetTokenMode mode )
 
     while ((c = TY_(ReadChar)(doc->docIn)) != EndOfStream)
     {
+        // Check to see if we're in a pre, if  so, don't worry about whitespace
+        while (parent) {
+          if (nodeIsPRE(parent)) {
+            mode = Preformatted;
+            hasPreAncestor = yes;
+          }
+
+          parent = parent->parent;
+        }
+
         if (lexer->insertspace)
         {
             TY_(AddCharToLexer)(lexer, ' ');
@@ -2550,6 +2561,7 @@ static Node* GetTokenFromStream( TidyDocImpl* doc, GetTokenMode mode )
             lexer->insertspace = no;
         }
 
+        // If non breaking space, change to a space
         if (c == 160 && (mode == Preformatted))
             c = ' ';
 
@@ -2564,15 +2576,6 @@ static Node* GetTokenFromStream( TidyDocImpl* doc, GetTokenMode mode )
                  for elements that don't have mixed content.
                 */
                 
-                // Check to see if we're in a pre, if  so, don't worry about whitespace
-                while (parent) {
-                  if (nodeIsPRE(parent)) {
-                    mode = Preformatted;
-                  }
-                  
-                  parent = parent->parent;
-                }
-
                 if (TY_(IsWhite)(c) && (mode == IgnoreWhitespace)
                       && lexer->lexsize == lexer->txtstart + 1)
                 {
@@ -2605,10 +2608,6 @@ static Node* GetTokenFromStream( TidyDocImpl* doc, GetTokenMode mode )
 
                         if (mode != Preformatted && mode != IgnoreMarkup && c != ' ')
                           ChangeChar(lexer, ' ');
-                        // THIS CHANGE ADDS NEWLINES BUT WE'RE STILL MISSING SPACES
-                        // if (mode != Preformatted && mode != IgnoreMarkup && c != ' ' && c != '\n') {
-                            
-                        // }
                     }
 
                     continue;
