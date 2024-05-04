@@ -2516,6 +2516,7 @@ static Node* GetTokenFromStream( TidyDocImpl* doc, GetTokenMode mode )
     AttVal *attributes = NULL;
     Node *node;
     Bool fixComments;
+    Node *parent = lexer->parent;
 
     switch ( cfgAutoBool(doc, TidyFixComments) )
     {
@@ -2562,7 +2563,17 @@ static Node* GetTokenFromStream( TidyDocImpl* doc, GetTokenMode mode )
                  to do this here rather than in parser methods
                  for elements that don't have mixed content.
                 */
-                if (TY_(IsWhite)(c) && (mode == IgnoreWhitespace) && (c != '\n' && mode != Preformatted)
+                
+                // Check to see if we're in a pre, if  so, don't worry about whitespace
+                while (parent) {
+                  if (nodeIsPRE(parent)) {
+                    mode = Preformatted;
+                  }
+                  
+                  parent = parent->parent;
+                }
+
+                if (TY_(IsWhite)(c) && (mode == IgnoreWhitespace)
                       && lexer->lexsize == lexer->txtstart + 1)
                 {
                     --(lexer->lexsize);
@@ -2590,11 +2601,14 @@ static Node* GetTokenFromStream( TidyDocImpl* doc, GetTokenMode mode )
                     }
                     else /* prev character wasn't white */
                     {
+                        lexer->waswhite = yes;
+
+                        if (mode != Preformatted && mode != IgnoreMarkup && c != ' ')
+                          ChangeChar(lexer, ' ');
                         // THIS CHANGE ADDS NEWLINES BUT WE'RE STILL MISSING SPACES
-                        if (mode != Preformatted && mode != IgnoreMarkup && c != ' ' && c != '\n') {
-                        // printf("(mode != Preformatted && mode != IgnoreMarkup && c != ' ') == true %d %c\n", c, c);
-                            ChangeChar(lexer, ' ');
-                        }
+                        // if (mode != Preformatted && mode != IgnoreMarkup && c != ' ' && c != '\n') {
+                            
+                        // }
                     }
 
                     continue;
