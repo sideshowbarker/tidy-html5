@@ -2567,12 +2567,13 @@ static Node* GetTokenFromStream( TidyDocImpl* doc, GetTokenMode mode )
         switch (lexer->state)
         {
             case LEX_CONTENT:  /* element content */
+
                 /*
                  Discard white space if appropriate. Its cheaper
                  to do this here rather than in parser methods
                  for elements that don't have mixed content.
                 */
-                if (TY_(IsWhite)(c) && (mode == IgnoreWhitespace)
+                if (TY_(IsWhite)(c) && (mode == IgnoreWhitespace) 
                       && lexer->lexsize == lexer->txtstart + 1)
                 {
                     --(lexer->lexsize);
@@ -2923,8 +2924,6 @@ static Node* GetTokenFromStream( TidyDocImpl* doc, GetTokenMode mode )
                 {
                     mode = Preformatted;
                 }
-
-                
 
                 if ((mode != Preformatted && ExpectsContent(lexer->token))
                     || nodeIsBR(lexer->token) || nodeIsHR(lexer->token))
