@@ -1,4 +1,7 @@
-line 1 column 1 - Access: [3.3.1.1]: use style sheets to control presentation.
-line 3 column 1 - Access: [13.2.1.1]: Metadata missing.
-No warnings or errors were found.
+line 1 column 1 - Warning: missing <!DOCTYPE> declaration
+line 3 column 31 - Warning: plain text isn't allowed in <head> elements
+line 3 column 31 - Warning: inserting implicit <body>
+line 4 column 1 - Warning: discarding unexpected </head>
+line 5 column 1 - Warning: discarding unexpected <body>
+Tidy found 5 warnings and 0 errors!
 
