@@ -1406,6 +1406,24 @@ static languageDefinition language_en = { whichPluralForm_en, {
       - It's very important that <br/> be self-closing!
       - The strings "Tidy" and "HTML Tidy" are the program name and must not
       be translated. */
+        TidyScriptNoFirstBlankLine,   0,
+        "This option controls whether Tidy adds a single blank line after the "
+        "<code>&lt;script&gt;</code> opening tag for readability. "
+        "<br/>"
+        "The default is <var>no</var>, which adds a single blank line after "
+        "the <code>&lt;script&gt;</code> tag. "
+        "<br/>"
+        "If set to <var>yes</var>, Tidy will suppress the blank line immediately "
+        "after the <code>&lt;script&gt;</code> tag."
+    },
+    {/* Important notes for translators:
+      - Use only <code></code>, <var></var>, <em></em>, <strong></strong>, and
+      <br/>.
+      - Entities, tags, attributes, etc., should be enclosed in <code></code>.
+      - Option values should be enclosed in <var></var>.
+      - It's very important that <br/> be self-closing!
+      - The strings "Tidy" and "HTML Tidy" are the program name and must not
+      be translated. */
         TidyWarnPropAttrs,            0,
         "This option specifies if Tidy should warn on proprietary attributes."
     },
