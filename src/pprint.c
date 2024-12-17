@@ -2139,7 +2139,10 @@ static void PPrintScriptStyle( TidyDocImpl* doc, uint mode, uint indent, Node *n
        In this case we don't want to flush the line, preferring to keep the required
        closing SCRIPT tag on the same line. */
     if ( node->content != NULL )
+    {
+      if (!cfgBool(doc, TidyScriptNoFirstBlankLine))
         PFlushLineSmart(doc, indent);
+    }
 
     if ( xhtmlOut && node->content != NULL )
     {

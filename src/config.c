@@ -259,6 +259,7 @@ static const TidyOptionImpl option_defs[] =
     { TidyUpperCaseTags,           MR, "uppercase-tags",              BL, no,              ParsePickList,     &boolPicks          },
     { TidyUseCustomTags,           MR, "custom-tags",                 IN, TidyCustomNo,    ParsePickList,     &customTagsPicks    }, /* 20170309 - Issue #119 */
     { TidyVertSpace,               PP, "vertical-space",              IN, no,              ParsePickList,     &autoBoolPicks      }, /* #228 - tri option */
+    { TidyScriptNoFirstBlankLine,  PP, "script-no-first-blank-line",  BL, no,              ParsePickList,     &boolPicks          },
     { TidyWarnPropAttrs,           DG, "warn-proprietary-attributes", BL, yes,             ParsePickList,     &boolPicks          },
     { TidyWord2000,                MC, "word-2000",                   BL, no,              ParsePickList,     &boolPicks          },
     { TidyWrapAsp,                 PP, "wrap-asp",                    BL, yes,             ParsePickList,     &boolPicks          },
