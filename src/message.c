@@ -324,7 +324,6 @@ static struct _dispatchTable {
     { MISSING_SEMICOLON,            TidyWarning,     formatStandard          },
     { MISSING_STARTTAG,             TidyWarning,     formatStandard          },
     { MISSING_TITLE_ELEMENT,        TidyWarning,     formatStandard          },
-    { MOVED_STYLE_TO_HEAD,          TidyWarning,     formatStandard          },
     { NESTED_EMPHASIS,              TidyWarning,     formatStandard          },
     { NESTED_QUOTATION,             TidyWarning,     formatStandard          },
     { NEWLINE_IN_URI,               TidyWarning,     formatAttributeReport   },
@@ -826,7 +825,6 @@ TidyMessageImpl *formatStandard(TidyDocImpl* doc, Node *element, Node *node, uin
         case ELEMENT_NOT_EMPTY:
         case FOUND_STYLE_IN_BODY:
         case ILLEGAL_NESTING:
-        case MOVED_STYLE_TO_HEAD:
         case TRIM_EMPTY_ELEMENT:
         case UNEXPECTED_END_OF_FILE:
             return TY_(tidyMessageCreateWithNode)(doc, rpt, code, level, elemdesc );

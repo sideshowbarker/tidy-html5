@@ -922,7 +922,6 @@ static languageDefinition language_pt_br = { whichPluralForm_pt_br, {
     { MISSING_SEMICOLON,                             0, "entidade \"%s\" não termina em ';'"                                                              },
     { MISSING_STARTTAG,                              0, "faltando <%s>"                                                                                   },
     { MISSING_TITLE_ELEMENT,                         0, "inserindo elemento faltante 'title'"                                                             },
-    { MOVED_STYLE_TO_HEAD,                           0, "tag <style> movida para <head>! fix-style-tags: no para evitar."                                 },
     { NESTED_EMPHASIS,                               0, "ênfase aninhada %s"                                                                              },
     { NESTED_QUOTATION,                              0, "elementos q aninhados, possível erro de escrita."                                                },
     { NEWLINE_IN_URI,                                0, "%s descartando nova linha na referência de URI"                                                  },

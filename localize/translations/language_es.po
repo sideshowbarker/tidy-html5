@@ -2516,10 +2516,6 @@ msgctxt "MISSING_TITLE_ELEMENT"
 msgid "inserting missing 'title' element"
 msgstr ""
 
-msgctxt "MOVED_STYLE_TO_HEAD"
-msgid "moved <style> tag to <head>! fix-style-tags: no to avoid."
-msgstr ""
-
 #, c-format
 msgctxt "NESTED_EMPHASIS"
 msgid "nested emphasis %s"
