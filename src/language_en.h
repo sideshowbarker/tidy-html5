@@ -2013,7 +2013,6 @@ static languageDefinition language_en = { whichPluralForm_en, {
     { MISSING_SEMICOLON,            0,   "entity \"%s\" doesn't end in ';'"                                        },
     { MISSING_STARTTAG,             0,   "missing <%s>"                                                            },
     { MISSING_TITLE_ELEMENT,        0,   "inserting missing 'title' element"                                       },
-    { MOVED_STYLE_TO_HEAD,          0,   "moved <style> tag to <head>! fix-style-tags: no to avoid."               },
     { NESTED_EMPHASIS,              0,   "nested emphasis %s"                                                      },
     { NESTED_QUOTATION,             0,   "nested q elements, possible typo."                                       },
     { NEWLINE_IN_URI,               0,   "%s discarding newline in URI reference"                                  },

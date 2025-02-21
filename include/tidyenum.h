@@ -235,7 +235,6 @@ extern "C" {
     FN(MISSING_SEMICOLON)             \
     FN(MISSING_STARTTAG)              \
     FN(MISSING_TITLE_ELEMENT)         \
-    FN(MOVED_STYLE_TO_HEAD)           \
     FN(NESTED_EMPHASIS)               \
     FN(NESTED_QUOTATION)              \
     FN(NEWLINE_IN_URI)                \

@@ -842,7 +842,6 @@ static languageDefinition language_de = { whichPluralForm_de, {
     { MISSING_SEMICOLON,                             0, "Entität \"%s\" endet nicht mit ';'"                                                                              },
     { MISSING_STARTTAG,                              0, "fehlendes <%s>"                                                                                                  },
     { MISSING_TITLE_ELEMENT,                         0, "füge fehlendes 'title' Element ein"                                                                              },
-    { MOVED_STYLE_TO_HEAD,                           0, "habe <style> Tag in den Kopfbereich (<head>) verschoben! Setzen Sie fix-style-tags: no, um dies zu vermeiden."   },
     { NESTED_EMPHASIS,                               0, "verschachtelte Hervorhebung %s"                                                                                  },
     { NESTED_QUOTATION,                              0, "verschachtelte q Elemente, möglicher Tippfehler"                                                                 },
     { NEWLINE_IN_URI,                                0, "%s verwerfe Zeilenumbruch im URI-Verweis"                                                                        },

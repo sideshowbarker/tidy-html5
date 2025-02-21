@@ -253,7 +253,7 @@ static const TidyOptionImpl option_defs[] =
     { TidySkipNested,              MR, "skip-nested",                 BL, yes,             ParsePickList,     &boolPicks          }, /* 1642186 - Issue #65 */
     { TidySortAttributes,          PP, "sort-attributes",             IN, TidySortAttrNone,ParsePickList,     &sorterPicks        },
     { TidyStrictTagsAttr,          MR, "strict-tags-attributes",      BL, no,              ParsePickList,     &boolPicks          }, /* 20160209 - Issue #350 */
-    { TidyStyleTags,               MR, "fix-style-tags",              BL, yes,             ParsePickList,     &boolPicks          },
+    { TidyStyleTags,               MR, "fix-style-tags",              BL, no,              ParsePickList,     &boolPicks          },
     { TidyTabSize,                 PP, "tab-size",                    IN, 8,               ParseInt,          NULL                },
     { TidyUpperCaseAttrs,          MR, "uppercase-attributes",        IN, TidyUppercaseNo, ParsePickList,     &attributeCasePicks },
     { TidyUpperCaseTags,           MR, "uppercase-tags",              BL, no,              ParsePickList,     &boolPicks          },
