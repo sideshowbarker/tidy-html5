@@ -2775,7 +2775,6 @@ static void StyleToHead(TidyDocImpl* doc, Node *head, Node *node, Bool fix, int 
             {
                 TY_(RemoveNode)(node); /* unhook style node from body */
                 TY_(InsertNodeAtEnd)(head, node);   /* add to end of head */
-                TY_(Report)(doc, node, head, MOVED_STYLE_TO_HEAD); /* report move */
             }
             else
             {
